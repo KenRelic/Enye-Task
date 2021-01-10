@@ -1,0 +1,11 @@
+.header {
+  padding: 1rem;
+  background-color: rebeccapurple;
+  color: #fff;
+  font-size: 1.6rem;
+  text-align: center;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,32 @@
+.card-wrapper{
+  width: 100%;
+  min-height: 300px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(49, 1, 62, 0.345);
+  padding: 1rem;
+  margin: 20px;
+  border-radius: 1rem;
+  line-height: 1.8;
+}
+
+.name{
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: rgb(140, 20, 225);
+}
+
+.heading{
+  font-weight: bold;
+}
+
+@media all and (min-width:688px){
+  .card-wrapper{
+    width:42%;
+  }
+}
+
+@media all and (min-width:1024px){
+  .card-wrapper{
+    width:420px;
+  }
+}
