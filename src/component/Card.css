@@ -7,6 +7,7 @@
   margin: 20px;
   border-radius: 1rem;
   line-height: 1.8;
+  border-bottom-width: 10px;
 }
 
 .name{
@@ -19,14 +20,20 @@
   font-weight: bold;
 }
 
+
+hr{
+  border: 0.5px dashed rgba(49, 1, 62, 0.345);
+  margin: 5px auto;
+}
+
 @media all and (min-width:688px){
   .card-wrapper{
-    width:42%;
+    width:44%;
   }
 }
 
 @media all and (min-width:1024px){
   .card-wrapper{
-    width:420px;
+    width:400px;
   }
 }

@@ -1,0 +1,38 @@
+.filter-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  width: 93%;
+  padding: 1rem;
+  align-items: center;
+  border: 1px solid rebeccapurple;
+  border-radius: 1rem;
+  margin: 2em auto;
+  position: relative;
+  margin-top: 100px;
+}
+
+select{
+  margin: 10px;
+  width: 100%;
+  padding: 15px;
+  border-radius: 1rem;
+  background-color: rgb(240, 225, 255);
+  border: none;
+}
+
+option{
+  padding: 1em 0;
+  margin: 1rem 0;
+  background-color: #fff;
+}
+
+label{
+  position: absolute;
+  background-color: #fff;
+  top: -12px;
+  padding: 0 5px;
+  left: 14px;
+
+}
+
+

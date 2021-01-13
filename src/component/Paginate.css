@@ -17,3 +17,7 @@ li{
   color: #fff;
   padding: 10px;
 }
+
+a{
+  cursor: pointer;
+}
