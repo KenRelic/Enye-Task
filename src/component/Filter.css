@@ -11,7 +11,7 @@
   margin-top: 100px;
 }
 
-select{
+select, input[type='search']{
   margin: 10px;
   width: 100%;
   padding: 15px;

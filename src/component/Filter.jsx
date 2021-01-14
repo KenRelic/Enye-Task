@@ -5,6 +5,8 @@ function FilterSearch(props){
     return(
     <div className="filter-wrapper">
       <label htmlFor="">Filter</label>
+      <input type="search" name="name" placeholder="Search by Name"
+       onChange={(e)=>handleOnChange(e,props)} value={props.nameValue} />
       <select name="gender" id="gender-filter"
       onChange={(e)=>handleOnChange(e,props)}>
         <option value="All gender" defaultValue>All Gender</option>
@@ -17,7 +19,7 @@ function FilterSearch(props){
         <option value="All payment method" defaultValue>All payment method</option>
         <option value="money order">Money Order</option>
         <option value="paypal">Paypal</option>
-        <option value="chheck">Check</option>
+        <option value="check">Check</option>
         <option value="cc">CC</option>
       </select>
     </div>
@@ -31,8 +33,10 @@ function handleOnChange(e, props) {
   let value = e.target.value
   if(e.target.name === 'gender'){
     props.handleStateChange[0](value);
-  }else{
+  }else if(e.target.name === 'payment-method'){
     props.handleStateChange[1](value);
+  }else{
+    props.handleStateChange[2](value);
   }
 }
 

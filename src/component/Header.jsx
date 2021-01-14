@@ -1,8 +1,8 @@
 import './Header.css';
 
-function Header(){
+function Header(props){
   return(
-    <header className='header'>Profiler</header>
+    <header className='header'>{props.value}</header>
   )
 }
 

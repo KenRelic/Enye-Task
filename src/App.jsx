@@ -15,9 +15,10 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      name: '',
       slicedData: [],
       offset: 0,
-      perPage: 5,
+      perPage: 20,
       currentPage: 0,
       paymentMethod:'All payment method',
       gender: 'All gender'
@@ -25,6 +26,7 @@ class App extends Component {
     this.handlePageClick = this.handlePageClick.bind(this);
     this.handleGenderChange = this.handleGenderChange.bind(this);
     this.handlePaymentChange = this.handlePaymentChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
     this.displayProfiles = this.displayProfiles.bind(this);
   }
   
@@ -51,22 +53,30 @@ class App extends Component {
 
   handlePageClick(e){
     const selectedPage = e.selected;
-    const offset = selectedPage * this.state.perPage;
-
+    let offset = selectedPage * this.state.perPage;
+   
         this.setState({
             currentPage: selectedPage,
             offset: offset
         }, () => {
-            this.displayProfiles(this.state.profiles)
+            this.displayProfiles(filteredResult)
         });
+  }
+
+  handleNameChange(value){
+    let state = this.state;
+    filteredResult =  state.profiles.filter((profile) => (profile.FirstName +' '+ profile.LastName).toLowerCase().includes(value.toLowerCase()) && (state.paymentMethod === 'All payment method'? true : state.PaymentMethod === profile.paymentMethod ? true : false) && (state.gender === 'All gender'? true : profile.Gender === state.gender ? true : false));
+    this.setState({
+      name: value,
+      offset:0,
+      currentPage:0,
+      pageCount: Math.ceil(filteredResult.length / this.state.perPage)
+    },()=> this.displayProfiles(filteredResult))
   }
 
   handleGenderChange(value){
     let state = this.state;
-    debugger
-    
-    
-    filteredResult = state.profiles.filter((profile) => (value === 'All gender' ? true : profile.Gender === value) && (state.paymentMethod === 'All payment method'? true : profile.PaymentMethod === state.paymentMethod ? true : false));
+    filteredResult = state.profiles.filter((profile) => (value === 'All gender' ? true : profile.Gender === value) && (state.paymentMethod === 'All payment method'? true : profile.PaymentMethod === state.paymentMethod ? true : false) && (`${profile.FirstName + profile.LastName}`).toLowerCase().includes(state.name.toLowerCase()));
 
     this.setState({
       gender:value,  
@@ -78,8 +88,7 @@ class App extends Component {
 
   handlePaymentChange(value){
     let state = this.state;
-    debugger
-    filteredResult = state.profiles.filter((profile) => (value === 'All payment method' ? true : profile.PaymentMethod === value) && (state.gender === 'All gender'? true : profile.Gender === state.gender ? true : false));
+    filteredResult = state.profiles.filter((profile) => (value === 'All payment method' ? true : profile.PaymentMethod === value) && (state.gender === 'All gender'? true : profile.Gender === state.gender ? true : false) && (`${profile.FirstName + profile.LastName}`).toLowerCase().includes(state.name.toLowerCase()));
 
     this.setState({
       paymentMethod:value,  
@@ -88,6 +97,8 @@ class App extends Component {
       pageCount: Math.ceil(filteredResult.length / this.state.perPage)},
        ()=> this.displayProfiles(filteredResult));
   }
+
+  
 
    componentDidMount(){
     this.getData();
@@ -98,14 +109,15 @@ class App extends Component {
     console.log(this.state.profiles, data)
    return (
       <>
-        <Header />
+        <Header value={this.state.name}/>
         <main>
           <FilterSearch 
           profiles={this.state.profiles}
           slicedData = {this.state.slicedData}
           gender = {this.state.gender}
           paymentMethod = {this.state.paymentMethod}
-          handleStateChange = {[this.handleGenderChange, this.handlePaymentChange]}
+          nameValue = {this.state.name}
+          handleStateChange = {[this.handleGenderChange, this.handlePaymentChange, this.handleNameChange]}
           />
           <div className="main">
                 {data.map((user)=> <Card key={data.indexOf(user)} data={user} />) } 
