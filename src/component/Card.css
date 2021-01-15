@@ -1,4 +1,4 @@
-.card-wrapper{
+.card{
   width: 100%;
   min-height: 300px;
   background-color: rgb(255, 255, 255);
@@ -27,13 +27,13 @@ hr{
 }
 
 @media all and (min-width:688px){
-  .card-wrapper{
+  .card{
     width:44%;
   }
 }
 
 @media all and (min-width:1024px){
-  .card-wrapper{
+  .card{
     width:400px;
   }
 }

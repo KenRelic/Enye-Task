@@ -98,7 +98,6 @@ class App extends Component {
        ()=> this.displayProfiles(filteredResult));
   }
 
-  
 
    componentDidMount(){
     this.getData();
@@ -109,7 +108,7 @@ class App extends Component {
     console.log(this.state.profiles, data)
    return (
       <>
-        <Header value={this.state.name}/>
+        <Header />
         <main>
           <FilterSearch 
           profiles={this.state.profiles}
@@ -119,7 +118,7 @@ class App extends Component {
           nameValue = {this.state.name}
           handleStateChange = {[this.handleGenderChange, this.handlePaymentChange, this.handleNameChange]}
           />
-          <div className="main">
+          <div className="card-wrapper">
                 {data.map((user)=> <Card key={data.indexOf(user)} data={user} />) } 
           </div>          
           <Paginate pageCount={this.state.pageCount} handlePageClick={this.handlePageClick} />

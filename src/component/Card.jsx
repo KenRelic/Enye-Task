@@ -28,7 +28,7 @@ function Card(props){
   }
 
   return(
-    <div className="card-wrapper" 
+    <div className="card" 
     style={style} 
   >
       <p className='name'>{FirstName +' '+ LastName}</p>
