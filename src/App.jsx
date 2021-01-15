@@ -5,6 +5,7 @@ import Card from './component/Card';
 import FilterSearch from './component/Filter';
 import Header from './component/Header';
 import Paginate from './component/Paginate';
+import {NoResult, FetchingData} from './component/SampleText';
 
 
 import './App.css';
@@ -105,7 +106,6 @@ class App extends Component {
 
   render(){
     let data = this.state.slicedData;
-    console.log(this.state.profiles, data)
    return (
       <>
         <Header />
@@ -119,9 +119,12 @@ class App extends Component {
           handleStateChange = {[this.handleGenderChange, this.handlePaymentChange, this.handleNameChange]}
           />
           <div className="card-wrapper">
-                {data.map((user)=> <Card key={data.indexOf(user)} data={user} />) } 
-          </div>          
-          <Paginate pageCount={this.state.pageCount} handlePageClick={this.handlePageClick} />
+                {!this.state.profiles ? <FetchingData /> : data.length !== 0 ? data.map((user)=> <Card key={data.indexOf(user)} data={user} />) : <NoResult /> } 
+          </div>  
+          {
+            this.state.slicedData.length > 0  && <Paginate pageCount={this.state.pageCount} handlePageClick={this.handlePageClick} /> 
+          }        
+        
         </main>
       </>
     )

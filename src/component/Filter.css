@@ -35,4 +35,9 @@ label{
 
 }
 
+@media (min-width:1024px){
+  .filter-wrapper{
+    width: 840px;
+  }
+}
 

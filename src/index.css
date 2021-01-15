@@ -24,7 +24,5 @@ body {
   body{
     width: 1400px;
     margin: 0 auto;
-    /* border: 10px solid rebeccapurple; */
-    background-color: rgba(102, 51, 153, 0.085);
   }
 }
