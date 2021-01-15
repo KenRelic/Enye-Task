@@ -34,7 +34,7 @@ class App extends Component {
   getData(){
     let state = this.state;
     axios
-      .get('http://api.enye.tech/v1/challenge/records')
+      .get('https://api.enye.tech/v1/challenge/records')
       .then(res => {
         const data = res.data;
         const profiles = data.records.profiles;
