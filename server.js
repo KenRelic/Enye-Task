@@ -28,7 +28,7 @@ app.get('/api/rates', async (req, res) => {
 
     // currency multiplier
     const multiplier = rates[base] || (base === 'EUR' ? 1 : undefined)
-    console.log(multiplier)
+
     if (multiplier) {
       let i;
       for (i = 0; i < currencies.length; i += 1) {        
@@ -45,11 +45,11 @@ app.get('/api/rates', async (req, res) => {
       })
     }
 
-    throw (Error);
+    throw (new Error(` the base currency ${base} is not available`));
   } catch (err) {
     res.status(401).json({
       err: 401,
-      message: err.message || 'Couldn\'t fetch result. The base currency isn\'t available '
+      message: err.message || 'Couldn\'t fetch result.'
     });
   }
 })
